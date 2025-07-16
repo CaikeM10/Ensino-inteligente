@@ -1,0 +1,1710 @@
+/* Variáveis de Cores e Fontes */
+:root {
+    --primary-color: #007bff; /* Azul vibrante */
+    --primary-dark: #0056b3;  /* Azul mais escuro para hover */
+    --secondary-color: #6c757d; /* Cinza médio */
+    --text-color-dark: #333;
+    --text-color-light: #f4f4f4;
+    --background-light: #f8f9fa;
+    --background-dark: #212529; /* Praticamente preto para footer */
+    --white: #ffffff;
+    --box-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --box-shadow-dark: 0 6px 20px rgba(0, 0, 0, 0.2);
+
+    /* Fontes */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    /* Nova variável para cor de acento */
+    --accent-color: #6DD5ED; /* Um azul ciano/água para detalhes e toques de destaque */
+    --secondary-text-color: #555; /* Para texto secundário, se for usado fora da nova seção */
+    --section-padding-desktop: 6rem 0; /* Ajustado para consistência com as seções já existentes */
+    --section-padding-mobile: 3.5rem 0; /* Ajustado para consistência com as seções já existentes */
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.7;
+    color: var(--text-color-dark);
+    background-color: var(--background-light);
+    scroll-behavior: smooth;
+    transition: margin-top 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* 24px para telas maiores */
+}
+
+/* Títulos de Seção */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem; /* 40px */
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 3.5rem; /* 56px */
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-dark);
+    border-radius: 2px;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem; /* 12.8px 28.8px */
+    border-radius: 0.3rem; /* 4.8px */
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-heading);
+    font-size: 1rem; /* 16px */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: var(--box-shadow-light);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-dark);
+}
+
+.btn-whatsapp-cta {
+    background-color: #25D366; /* Verde WhatsApp */
+    color: var(--white);
+    font-size: 1.1rem; /* 17.6px */
+    padding: 1rem 2.2rem; /* 16px 35.2px */
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp-cta:hover {
+    background-color: #1DA851; /* Verde mais escuro */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+}
+
+.btn-whatsapp-cta i {
+    margin-right: 0.5rem;
+}
+
+/* Header */
+.header {
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 1rem 0; /* 16px */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo {
+    height: 60px; /* Tamanho médio */
+    width: auto;
+    margin-right: 0.6rem; /* 9.6px */
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover .logo {
+    transform: scale(1.05);
+}
+
+.company-name {
+    font-family: var(--font-heading);
+    font-size: 1.9rem; /* 30.4px */
+    font-weight: 700;
+    color: var(--primary-color);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.logo-link:hover .company-name {
+    color: var(--primary-dark);
+}
+
+/* Menu de Navegação (Desktop padrão) */
+.nav-menu {
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu ul li {
+    margin-left: 2rem; /* 32px */
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: var(--text-color-dark);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: var(--primary-dark);
+}
+
+.nav-menu ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hamburger Menu (global, hidden by default on desktop) */
+.hamburger-menu {
+    display: none; /* Por padrão, escondido no desktop */
+    font-size: 2rem; /* 32px */
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+/* Estiliza o ícone <i> dentro do botão */
+.hamburger-menu i {
+    color: var(--primary-color);
+    font-size: 2rem;
+    display: block;
+    line-height: 1;
+}
+
+.hamburger-menu:hover i {
+    color: var(--primary-dark);
+}
+
+/* Hero Section (Início) */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 10rem 0 6rem 0; /* Padding padrão para toda a seção */
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem; /* 48px */
+}
+
+/* ESTILOS ESPECÍFICOS PARA OS ITENS FLEXÍVEIS DA HERO SECTION */
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    display: flex; /* Define hero-content como um contêiner flex para seus próprios filhos */
+    flex-direction: column; /* Conteúdo interno em coluna (h1, p, botão desktop) */
+    align-items: flex-start; /* Alinha o conteúdo interno à esquerda por padrão */
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    width: 100%;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    width: 100%;
+}
+
+/* Botão desktop, dentro do hero-content */
+.hero-cta-desktop {
+    margin-top: 1.5rem; /* Margem para separar do parágrafo */
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow-dark);
+    display: block;
+}
+
+/* NOVA SEÇÃO: SOBRE NÓS COM AS INFORMAÇÕES DO THYELISOM */
+.about-section {
+    padding: 6rem 0; /* Padding padrão para seções */
+    background-color: var(--white);
+    text-align: center; /* Centraliza o título e o container no mobile */
+    overflow-x: hidden; /* Adicionado para evitar scroll horizontal se os cards ultrapassarem */
+}
+
+/* FIM DA NOVA SEÇÃO */
+
+
+/* Seção de Serviços */
+.services-section {
+    padding: 6rem 0;
+    background-color: var(--background-light);
+}
+
+.service-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.service-item {
+    background-color: var(--white);
+    padding: 2.2rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-light);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-dark);
+}
+
+.service-item img {
+    max-width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.service-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.service-item p {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.service-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.service-link:hover {
+    color: var(--primary-dark);
+    transform: translateX(5px);
+}
+
+.service-link i {
+    margin-left: 0.5rem;
+    font-size: 0.9em;
+}
+
+/* Seção de Parcerias */
+.partners-section {
+    padding: 6rem 0;
+    background-color: var(--white);
+}
+
+.partners-logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+/* Estilo para cada item de parceiro (logo + nome) */
+.partner-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+/* Estilo para a imagem da logo */
+.partner-logo {
+    max-width: 160px;
+    height: auto;
+    object-fit: contain;
+    transition: all 0.4s ease;
+}
+
+.partner-item:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+/* Estilo para o nome do parceiro */
+.partner-name {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-top: 0.5rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+
+/* Seção de Contato Rápido (CTA) */
+.contact-cta-section {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+    color: var(--white);
+    padding: 5rem 0;
+    text-align: center;
+    border-radius: 10px;
+    margin: 4rem auto;
+    max-width: 1000px;
+    box-shadow: var(--box-shadow-dark);
+}
+
+.contact-cta-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-cta-section p {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Botão Flutuante do WhatsApp */
+.whatsapp-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #25D366;
+    color: var(--white);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* NOVO BOTÃO FLUTUANTE PARA O APP */
+.app-button {
+    position: fixed;
+    /* Ajusta a posição para que ele fique acima do botão do WhatsApp */
+    bottom: calc(2rem + 60px + 1rem); /* 2rem (bottom do whatsapp) + 60px (altura do whatsapp) + 1rem (espaço) */
+    right: 2rem;
+    background-color: var(--primary-color); /* Uma cor que combine com sua marca */
+    color: var(--white);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem; /* Um pouco menor que o WhatsApp para diferenciar */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.app-button:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--background-dark);
+    color: var(--text-color-light);
+    padding: 4rem 0 1.5rem 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-col {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.footer-logo-area .logo {
+    height: 80px;
+    margin-right: 0.8rem;
+}
+
+.footer-logo-area .company-name {
+    color: var(--white);
+    font-size: 1.6rem;
+}
+
+.footer-info p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-links h3, .footer-contact h3, .footer-social h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-links ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-contact p {
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-contact p i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.footer-contact p a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact p a:hover {
+    color: var(--primary-color);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.social-icons a {
+    color: var(--white);
+    font-size: 1.6rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Media Queries para Responsividade Profissional */
+
+/* Pequenos Smartphones (até 767px) */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .header-container {
+        padding-right: 1rem;
+    }
+
+    .company-name {
+        font-size: 1.5rem;
+    }
+
+    /* Menu Hamburger */
+    .hamburger-menu {
+        display: block !important;
+        position: relative; 
+        z-index: 1001; 
+        background: none;
+        border: none; 
+        padding: 0.5rem;
+        box-sizing: content-box;
+        margin-right: 0;
+    }
+
+    .hamburger-menu i {
+        color: var(--primary-color);
+        font-size: 2rem;
+        display: block;
+        line-height: 1;
+        width: 1em;
+        height: 1em;
+        min-width: 2rem;
+        min-height: 2rem;
+        overflow: visible;
+    }
+
+    /* ESTILOS ESPECÍFICOS PARA A SEÇÃO HERO NO MOBILE */
+    .hero-section .hero-container {
+        flex-direction: column; /* Coluna para mobile */
+        align-items: center; /* Centraliza itens */
+    }
+
+    .hero-content {
+        order: 1; /* Texto (H1, P) vem primeiro */
+        text-align: center; /* Centraliza o texto no mobile */
+        margin-bottom: 2rem; /* Espaço após o bloco de texto */
+        align-items: center; /* Centraliza os itens flexíveis (H1, P) */
+    }
+
+    .hero-image {
+        order: 2; /* Imagem vem em segundo */
+        margin-bottom: 2rem; /* Espaço após a imagem */
+    }
+
+    .hero-cta-mobile { /* O botão principal da Hero Section - APENAS PARA MOBILE */
+        order: 3; /* Botão vem por último no fluxo mobile */
+        margin-top: 1rem; /* Espaço acima do botão (após a imagem) */
+        width: auto;
+        max-width: 80%;
+        display: inline-block; /* Garante que seja visível no mobile */
+    }
+
+    .hero-cta-desktop { /* O botão para desktop - ESCONDIDO NO MOBILE */
+        display: none;
+    }
+    /* FIM DOS ESTILOS ESPECÍFICOS PARA A SEÇÃO HERO NO MOBILE */
+
+/* Ajustes ESPECÍFICOS para a seção "Sobre Nós" no mobile */
+@media (max-width: 767px) {
+    .about-section .container.about-container {
+        display: flex; /* Garante que o container seja flex novamente no mobile */
+        flex-direction: column; /* Organiza os cards em coluna no mobile */
+        align-items: center; /* Centraliza os cards horizontalmente */
+        gap: 1.5rem; /* Espaçamento entre os cards */
+        text-align: center; /* Centraliza o texto dentro de cada card */
+    }
+
+    .about-person-card {
+        display: flex;
+        flex-direction: column; /* Conteúdo do card em coluna */
+        align-items: center; /* Centraliza os itens dentro do card */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .about-person-card .about-image {
+        order: -1; /* Move a imagem para cima (primeiro item visual) */
+        margin-bottom: 0.5rem; /* Adiciona um pouco de espaço entre a imagem e o texto */
+    }
+
+    .about-person-card .about-content {
+        order: 1; /* Garante que o conteúdo de texto venha depois da imagem */
+    }
+}
+/* Fim dos ajustes específicos para "Sobre Nós" no mobile */
+
+
+    /* Posição dos botões flutuantes no mobile */
+    .whatsapp-button {
+        bottom: 1.2rem;
+        right: 1.2rem;
+        width: 50px;
+        height: 50px;
+        font-size: 2.2rem;
+    }
+
+    .app-button {
+        bottom: calc(1.2rem + 50px + 0.8rem);
+        right: 1.2rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+
+
+    /* ESTILOS ESSENCIAIS PARA O MENU MOBILE APARECER */
+    .nav-menu {
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        z-index: 990;
+        overflow-y: auto;
+        display: flex;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all; 
+    }
+
+    .hamburger-menu.active i.fa-times {
+        color: var(--white);
+    }
+
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%; 
+    }
+
+    .nav-menu ul li {
+        margin: 1rem 0; 
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu ul li a {
+        font-size: 1.5rem; 
+        padding: 0.8rem 0; 
+        display: block;
+        color: var(--white); 
+    }
+    
+    .nav-menu ul li a::after {
+        background-color: var(--white);
+    }
+
+    /* Trava o scroll do body quando o menu está aberto */
+    body.no-scroll {
+        overflow: hidden;
+    }
+
+    /* Outras Seções no Mobile */
+    .hero-section {
+        padding: 8rem 0 4rem 0;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+    .service-gallery {
+        grid-template-columns: 1fr;
+    }
+    .service-item img {
+        height: 180px;
+    }
+    .partners-logo-container {
+        gap: 1.5rem;
+    }
+    .partner-logo {
+        max-width: 100px;
+    }
+    .contact-cta-section {
+        padding: 3rem 1rem;
+        margin: 3rem auto;
+    }
+    .contact-cta-section h2 {
+        font-size: 1.8rem;
+    }
+    .contact-cta-section p {
+        font-size: 0.95rem;
+    }
+    .btn-whatsapp-cta {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+    }
+    .whatsapp-button {
+        bottom: 1.2rem;
+        right: 1.2rem;
+        width: 50px;
+        height: 50px;
+        font-size: 2.2rem;
+    }
+    .app-button { /* Reinicia estilo do app-button para mobile */
+        bottom: calc(1.2rem + 50px + 0.8rem);
+        right: 1.2rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+    .footer-container {
+        gap: 1.5rem;
+    }
+    .footer-logo-area {
+        margin-bottom: 0.5rem;
+    }
+    .footer-logo-area .company-name {
+        font-size: 1.4rem;
+    }
+    .footer-links h3, .footer-contact h3, .footer-social h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    .footer-links ul li a, .footer-contact p {
+        font-size: 0.9rem;
+    }
+    .social-icons a {
+        font-size: 1.4rem;
+        width: 35px;
+        height: 35px;
+    }
+    .footer-bottom {
+        padding-top: 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Tablets Grandes e Laptops Pequenos (768px a 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .header-container {
+        padding: 0 1.5rem;
+    }
+    .company-name {
+        font-size: 1.7rem;
+    }
+    .nav-menu ul li {
+        margin-left: 1.5rem;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-content p {
+        font-size: 1.15rem;
+    }
+    .service-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .partners-logo-container {
+        gap: 2rem;
+    }
+    .partner-logo {
+        max-width: 130px;
+    }
+    .footer-col {
+        text-align: left;
+    }
+    .footer-logo-area, .social-icons {
+        justify-content: flex-start;
+    }
+
+    /* SEÇÃO SOBRE NÓS NO TABLET */
+    .about-container {
+        flex-direction: row; /* Lado a lado no tablet */
+        align-items: center;
+        text-align: left; /* Alinha o texto à esquerda */
+    }
+    .about-content {
+        text-align: left; /* Garante que o texto dentro do content esteja alinhado à esquerda */
+        padding-left: 2rem;
+    }
+    .about-image {
+        order: 0; /* Imagem primeiro (esquerda) */
+    }
+    .about-content {
+        order: 1; /* Conteúdo depois (direita) */
+    }
+    /* FIM SEÇÃO SOBRE NÓS NO TABLET */
+}
+
+/* Desktops (992px e acima) */
+@media (min-width: 992px) {
+    .nav-menu {
+        display: flex;
+        position: static;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+        height: auto;
+    }
+    .nav-menu ul {
+        flex-direction: row;
+    }
+    .hamburger-menu {
+        display: none;
+    }
+
+    /* AGORA O HEADER-CONTAINER ESTÁ AQUI PARA CONTROLAR O PADDING-LEFT */
+    .header-container {
+        padding-left: 0.5rem; /* Puxa a logo mais para a esquerda */
+        padding-right: 1.5rem; /* Mantém o padding direito padrão */
+    }
+
+    .hero-container {
+        flex-direction: row; /* Volta para layout de linha */
+        text-align: left;
+        align-items: center; /* Alinha o conteúdo ao centro verticalmente no desktop */
+    }
+    /* HERO CONTENT VEM PRIMEIRO NO DESKTOP */
+    .hero-content {
+        order: 0; /* Texto (h1, p) vêm primeiro */
+        padding-right: 2rem;
+        text-align: left;
+        align-items: flex-start; /* Alinha os itens flexíveis (h1, p) à esquerda */
+    }
+    /* HERO IMAGE VEM DEPOIS NO DESKTOP */
+    .hero-image {
+        order: 1; /* Imagem vem em segundo */
+    }
+
+    .hero-cta-desktop { /* O botão principal da Hero Section - APENAS PARA DESKTOP */
+        display: inline-block; /* Garante que seja visível no desktop */
+        margin-top: 1.5rem; /* Espaço para separar do parágrafo */
+    }
+
+    .hero-cta-mobile { /* O botão para mobile - ESCONDIDO NO DESKTOP */
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content p {
+        font-size: 1.3rem;
+    }
+    .service-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* ESTILO PARA ALINHAR IMAGENS DE PARCEIROS LADO A LADO NO DESKTOP */
+    .partners-logo-container {
+        display: flex; /* Ativa o flexbox */
+        flex-wrap: wrap; /* Permite que os itens quebrem se a tela diminuir */
+        justify-content: center; /* Centraliza os itens horizontalmente */
+        align-items: center; /* Alinha verticalmente */
+        gap: 3rem; /* Mantém o espaçamento entre as logos */
+    }
+    .partner-item {
+        flex: 0 1 calc(25% - 2.25rem); /* Ajustado para 4 itens por linha, considerando o gap: 3rem = 48px -> (48px / 4) = 12px por lado, 2rem é 32px. então 2.25rem é um pouco mais para balancear o espaçamento */
+        min-width: 180px; /* Garante que as logos não fiquem muito pequenas */
+    }
+    /* FIM DO ESTILO ESPECÍFICO PARA PARCEIROS */
+
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .footer-col {
+        text-align: left;
+    }
+    .footer-logo-area {
+        justify-content: flex-start;
+    }
+    .social-icons {
+        justify-content: flex-start;
+    }
+
+    /* SEÇÃO SOBRE NÓS NO DESKTOP */
+    /* Este bloco de CSS será substituído ou modificado. */
+    .about-container { /* Esta regra será substituída pela mais específica abaixo */
+        flex-direction: row; /* Lado a lado no desktop */
+        text-align: left; /* Alinha o texto à esquerda */
+    }
+    .about-content { /* Esta regra será substituída pela mais específica abaixo */
+        text-align: left; /* Garante que o texto dentro do content esteja alinhado à esquerda */
+        padding-left: 2rem;
+    }
+    /* FIM SEÇÃO SOBRE NÓS NO DESKTOP */
+}
+
+/* --- NOVA SEÇÃO: RESULTADOS --- */
+.results-section {
+    background-color: var(--primary-color); /* Fundo com a cor primária */
+    color: var(--white);
+    padding: var(--section-padding-desktop);
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Para elementos de fundo */
+}
+
+.results-section::before { /* Elemento de fundo sutil */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 0%, transparent 60%);
+    z-index: 0;
+}
+
+.results-section .section-title {
+    color: var(--white); /* Título branco no fundo colorido */
+}
+
+.results-section .section-title::after {
+    background: linear-gradient(to right, var(--white), var(--accent-color)); /* Underline branco/acento */
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Colunas flexíveis */
+    gap: 3rem; /* Espaçamento entre os itens */
+    justify-content: center;
+    align-items: flex-start;
+    position: relative; /* Para ficar acima do ::before */
+    z-index: 1;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    border-radius: 12px;
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.result-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo mais opaco no hover */
+}
+
+.result-item .icon-large {
+    font-size: 3.5rem; /* Ícones grandes */
+    color: var(--accent-color); /* Cor de destaque para os ícones */
+    margin-bottom: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.result-item:hover .icon-large {
+    transform: scale(1.1);
+}
+
+.result-item .result-number {
+    font-family: var(--font-heading);
+    font-size: 3.8rem; /* Números bem grandes */
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1; /* Para evitar espaçamento extra */
+    margin-bottom: 0.8rem;
+}
+
+.result-item .result-text {
+    font-size: 1.2rem; /* Texto descritivo */
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+/* --- NOVA SEÇÃO: CURRÍCULOS --- */
+.curriculos-section {
+    background-color: var(--background-light); /* Fundo claro para contraste */
+    padding: var(--section-padding-desktop);
+    text-align: center;
+}
+
+.curriculos-section .section-title {
+    color: var(--primary-color); /* Título na cor primária */
+}
+
+.curriculos-section .section-title::after {
+    background-color: var(--primary-dark); /* Underline na cor escura */
+}
+
+.curriculos-description {
+    font-size: 1.15rem;
+    color: var(--text-color-dark); /* Texto na cor escura padrão */
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.curriculos-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Espaçamento entre o botão e o texto */
+    margin-top: 2.5rem;
+}
+
+.curriculos-note {
+    font-size: 0.95rem;
+    color: var(--secondary-color); /* Texto de nota na cor secundária */
+    margin-top: 1rem;
+    opacity: 0.9; /* Um pouco mais opaco */
+}
+
+.curriculos-note .email-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.curriculos-note .email-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* --- NOVA SEÇÃO: CERTIFICADOS E FOTOS --- */
+.certificados-section {
+    background-color: var(--background-light); /* Pode ser ajustado para outra cor se preferir */
+    padding: var(--section-padding-desktop);
+    text-align: center;
+}
+
+.certificados-section .section-title {
+    color: var(--primary-color);
+}
+
+.certificados-section .section-title::after {
+    background-color: var(--primary-dark);
+}
+
+.certificados-description {
+    font-size: 1.15rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 3rem; /* Mais espaço antes da galeria */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.certificados-gallery {
+    display: grid; /* Usando Grid Layout para a galeria */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 3 a 4 colunas, ajustáveis */
+    gap: 1.5rem; /* Espaçamento entre as imagens */
+    justify-content: center; /* Centraliza a grade se houver espaço extra */
+    align-items: start; /* Alinha itens ao topo da célula do grid */
+}
+
+.certificados-gallery img {
+    width: 100%; /* Garante que a imagem preencha a célula do grid */
+    height: 180px; /* Altura fixa para uniformidade, ajuste conforme necessário */
+    object-fit: cover; /* Recorta a imagem para cobrir a área sem distorcer */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: var(--box-shadow-light); /* Sombra sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificados-gallery img:hover {
+    transform: translateY(-5px) scale(1.02); /* Efeito de elevação e leve zoom no hover */
+    box-shadow: var(--box-shadow-medium);
+}
+
+
+/* Media Queries para Responsividade Profissional */
+
+/* Pequenos Smartphones (até 767px) */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .header-container {
+        padding-right: 1rem;
+    }
+
+    .company-name {
+        font-size: 1.5rem;
+    }
+
+    /* Menu Hamburger */
+    .hamburger-menu {
+        display: block !important;
+        position: relative; 
+        z-index: 1001; 
+        background: none;
+        border: none; 
+        padding: 0.5rem;
+        box-sizing: content-box;
+        margin-right: 0;
+    }
+
+    .hamburger-menu i {
+        color: var(--primary-color);
+        font-size: 2rem;
+        display: block;
+        line-height: 1;
+        width: 1em;
+        height: 1em;
+        min-width: 2rem;
+        min-height: 2rem;
+        overflow: visible;
+    }
+
+    /* ESTILOS ESPECÍFICOS PARA A SEÇÃO HERO NO MOBILE */
+    .hero-section .hero-container {
+        flex-direction: column; /* Coluna para mobile */
+        align-items: center; /* Centraliza itens */
+    }
+
+    .hero-content {
+        order: 1; /* Texto (H1, P) vem primeiro */
+        text-align: center; /* Centraliza o texto no mobile */
+        margin-bottom: 2rem; /* Espaço após o bloco de texto */
+        align-items: center; /* Centraliza os itens flexíveis (H1, P) */
+    }
+
+    .hero-image {
+        order: 2; /* Imagem vem em segundo */
+        margin-bottom: 2rem; /* Espaço após a imagem */
+    }
+
+    .hero-cta-mobile { /* O botão principal da Hero Section - APENAS PARA MOBILE */
+        order: 3; /* Botão vem por último no fluxo mobile */
+        margin-top: 1rem; /* Espaço acima do botão (após a imagem) */
+        width: auto;
+        max-width: 80%;
+        display: inline-block; /* Garante que seja visível no mobile */
+    }
+
+    .hero-cta-desktop { /* O botão para desktop - ESCONDIDO NO MOBILE */
+        display: none;
+    }
+    /* FIM DOS ESTILOS ESPECÍFICOS PARA A SEÇÃO HERO NO MOBILE */
+
+    /* SEÇÃO SOBRE NÓS NO MOBILE */
+    .about-container { /* Esta regra original será sobreposta pela mais específica abaixo */
+        flex-direction: column; /* Garante que seja coluna no mobile */
+        text-align: center; /* Centraliza o texto da seção sobre nós no mobile */
+    }
+    .about-content { /* Esta regra original será sobreposta pela mais específica abaixo */
+        text-align: center; /* Garante que o texto dentro do content esteja centralizado */
+    }
+    .about-image { /* Esta regra original será sobreposta pela mais específica abaixo */
+        order: 1; /* Imagem primeiro no mobile */
+    }
+    /* FIM SEÇÃO SOBRE NÓS NO MOBILE */
+
+
+    /* Posição dos botões flutuantes no mobile */
+    .whatsapp-button {
+        bottom: 1.2rem;
+        right: 1.2rem;
+        width: 50px;
+        height: 50px;
+        font-size: 2.2rem;
+    }
+
+    .app-button {
+        bottom: calc(1.2rem + 50px + 0.8rem);
+        right: 1.2rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+
+
+    /* ESTILOS ESSENCIAIS PARA O MENU MOBILE APARECER */
+    .nav-menu {
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        z-index: 990;
+        overflow-y: auto;
+        display: flex;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all; 
+    }
+
+    .hamburger-menu.active i.fa-times {
+        color: var(--white);
+    }
+
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%; 
+    }
+
+    .nav-menu ul li {
+        margin: 1rem 0; 
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu ul li a {
+        font-size: 1.5rem; 
+        padding: 0.8rem 0; 
+        display: block;
+        color: var(--white); 
+    }
+    
+    .nav-menu ul li a::after {
+        background-color: var(--white);
+    }
+
+    /* Trava o scroll do body quando o menu está aberto */
+    body.no-scroll {
+        overflow: hidden;
+    }
+
+    /* Outras Seções no Mobile */
+    .hero-section {
+        padding: 8rem 0 4rem 0;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+    .service-gallery {
+        grid-template-columns: 1fr;
+    }
+    .service-item img {
+        height: 180px;
+    }
+    .partners-logo-container {
+        gap: 1.5rem;
+    }
+    .partner-logo {
+        max-width: 100px;
+    }
+    .contact-cta-section {
+        padding: 3rem 1rem;
+        margin: 3rem auto;
+    }
+    .contact-cta-section h2 {
+        font-size: 1.8rem;
+    }
+    .contact-cta-section p {
+        font-size: 0.95rem;
+    }
+    .btn-whatsapp-cta {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+    }
+    .whatsapp-button {
+        bottom: 1.2rem;
+        right: 1.2rem;
+        width: 50px;
+        height: 50px;
+        font-size: 2.2rem;
+    }
+    .app-button { /* Reinicia estilo do app-button para mobile */
+        bottom: calc(1.2rem + 50px + 0.8rem);
+        right: 1.2rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+    .footer-container {
+        gap: 1.5rem;
+    }
+    .footer-logo-area {
+        margin-bottom: 0.5rem;
+    }
+    .footer-logo-area .company-name {
+        font-size: 1.4rem;
+    }
+    .footer-links h3, .footer-contact h3, .footer-social h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    .footer-links ul li a, .footer-contact p {
+        font-size: 0.9rem;
+    }
+    .social-icons a {
+        font-size: 1.4rem;
+        width: 35px;
+        height: 35px;
+    }
+    .footer-bottom {
+        padding-top: 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* Ajustes de responsividade para a seção de resultados */
+    .results-section {
+        padding: var(--section-padding-mobile); /* Usa padding mobile */
+    }
+    .results-section .section-title {
+        font-size: 2.2rem; /* Menor no mobile */
+    }
+    .results-grid {
+        grid-template-columns: 1fr; /* Uma coluna no mobile */
+        gap: 1.5rem; /* Menor gap */
+    }
+    .result-item {
+        padding: 1.5rem 1rem;
+    }
+    .result-item .icon-large {
+        font-size: 2.8rem; /* Ícone menor */
+        margin-bottom: 0.8rem;
+    }
+    .result-item .result-number {
+        font-size: 3rem; /* Número menor */
+        margin-bottom: 0.6rem;
+    }
+    .result-item .result-text {
+        font-size: 1rem; /* Texto menor */
+    }
+
+    /* Ajustes de responsividade para a seção de currículos */
+    .curriculos-section { /* OBS: Esta classe foi renomeada para certificados no HTML, mas suas regras ainda podem estar aqui. Remova se não for usar. */
+        padding: var(--section-padding-mobile);
+    }
+    .curriculos-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .curriculos-section .section-title::after {
+        width: 60px;
+        height: 3px;
+    }
+    .curriculos-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .curriculos-cta {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    .curriculos-note {
+        font-size: 0.85rem;
+        margin-top: 0.8rem;
+    }
+
+    /* Ajustes de responsividade para a seção de certificados */
+    .certificados-section .section-title {
+        font-size: 2rem; /* Menor no mobile */
+        margin-bottom: 2rem;
+    }
+    .certificados-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .certificados-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 2 a 3 colunas em mobile */
+        gap: 1rem;
+    }
+    .certificados-gallery img {
+        height: 120px; /* Altura menor no mobile */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas em tablets */
+        gap: 2rem;
+    }
+    .result-item .icon-large {
+        font-size: 3rem;
+    }
+    .result-item .result-number {
+        font-size: 3.2rem;
+    }
+
+    .curriculos-section .section-title { /* OBS: Classe removida do HTML. Remova se não for usar. */
+        font-size: 2.2rem;
+    }
+    .curriculos-description {
+        font-size: 1.05rem;
+    }
+
+    .certificados-section .section-title {
+        font-size: 2.2rem;
+    }
+    .certificados-description {
+        font-size: 1.05rem;
+    }
+    .certificados-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 2 a 3 colunas em tablets */
+        gap: 1.2rem;
+    }
+    .certificados-gallery img {
+        height: 150px; /* Altura ajustada para tablets */
+    }
+}
+
+/* Estilos para os cards de pessoas na seção "Sobre Nós" */
+.about-section .container.about-container {
+    /* Esta regra é crucial para organizar os cards em um grid */
+    display: grid;
+    /* Alterado para forçar 2 colunas no desktop */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2rem; /* Espaçamento entre os cards */
+    justify-content: center; /* Centraliza a grade */
+    align-items: start; /* Alinha os cards ao topo da célula do grid */
+    max-width: 900px; /* Reduz a largura máxima para que 2 colunas não fiquem excessivamente grandes */
+    margin: 0 auto; /* Centraliza o container */
+    padding: 0 1.5rem; /* Mantém o padding interno para o container do grid */
+    flex-direction: unset; /* Remove herança de flex-direction */
+    text-align: unset; /* Remove herança de text-align */
+}
+
+.about-person-card {
+    display: flex;
+    flex-direction: column; /* Conteúdo interno do card em coluna */
+    align-items: center; /* Centraliza o conteúdo (imagem, texto) dentro do card */
+    text-align: center; /* Centraliza o texto do card */
+    gap: 0.8rem; /* Espaçamento entre os elementos dentro do card */
+    background-color: var(--background-light); /* Fundo claro para os cards, para contrastar com o main */
+    padding: 1.8rem 1.2rem; /* Padding interno do card */
+    border-radius: 12px;
+    box-shadow: var(--box-shadow-light); /* Sombra sutil */
+    border: 1px solid rgba(0,0,0,0.05); /* Borda sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: auto; /* Altura automática para se adaptar ao conteúdo */
+    justify-content: flex-start; /* Alinha o conteúdo ao topo do card */
+    overflow: hidden; /* Garante que nada transborde */
+}
+
+.about-person-card:hover {
+    transform: translateY(-5px); /* Pequeno lift no hover */
+    box-shadow: var(--box-shadow-medium);
+}
+
+.about-person-card .about-image {
+    flex: none; /* A imagem não deve encolher/crescer */
+    width: 150px; /* Tamanho fixo para a imagem da pessoa */
+    height: 150px;
+    border-radius: 50%; /* Imagem redonda */
+    overflow: hidden; /* Garante que a imagem redonda funcione */
+    border: 4px solid var(--primary-color); /* Borda colorida */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Sombra para a imagem */
+    display: flex; /* Para centralizar a imagem dentro da div (se a imagem for menor) */
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 0.5rem; /* Espaçamento da imagem para o nome */
+}
+
+.about-person-card .about-image:hover {
+    border-color: var(--accent-color); /* Muda a cor da borda no hover */
+    transform: scale(1.05); /* Leve zoom na borda da imagem */
+}
+
+.about-person-card .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta a imagem para preencher o círculo sem distorcer */
+    border-radius: 50%; /* Garante a circularidade mesmo com object-fit */
+}
+
+.about-person-card .about-content {
+    text-align: center;
+    width: 100%; /* Ocupa a largura total do card para centralizar texto */
+}
+
+.about-person-card .person-name {
+    font-family: var(--font-heading);
+    font-size: 1.5rem; /* Ajuste o tamanho da fonte */
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 0.3rem; /* Espaçamento menor */
+}
+
+.about-person-card .person-role {
+    font-size: 0.9rem; /* Ajuste o tamanho da fonte */
+    color: var(--secondary-text-color); /* Cor de destaque para o cargo */
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+.about-person-card p {
+    font-size: 0.85rem; /* Ajuste o tamanho da fonte para ser conciso */
+    color: var(--secondary-color); /* Use a cor secundária para o corpo do texto */
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.about-person-card .btn-primary {
+    margin-top: 1rem; /* Margem para o botão */
+}
+
+/* --- MEDIA QUERIES ESPECÍFICAS PARA OS CARDS DE PESSOAS --- */
+
+/* Pequenos Smartphones (até 767px) */
+@media (max-width: 767px) {
+    .about-section .container.about-container {
+        grid-template-columns: 1fr; /* Uma coluna no mobile */
+        gap: 1.5rem; /* Menor gap entre os cards */
+        padding: 0 1rem; /* Ajuste o padding para o mobile */
+    }
+    .about-person-card {
+        padding: 1.5rem 1rem; /* Menos padding no card mobile */
+        max-width: 100%; /* Ocupa toda a largura disponível */
+        margin-bottom: 0; /* Removido se o gap já gerencia o espaçamento */
+    }
+    .about-person-card .about-image {
+        width: 100px; /* Imagem menor no mobile */
+        height: 100px;
+    }
+    .about-person-card .person-name {
+        font-size: 1.3rem;
+    }
+    .about-person-card .person-role {
+        font-size: 0.8rem;
+    }
+    .about-person-card p {
+        font-size: 0.75rem; /* Texto ainda menor para concisão */
+    }
+}
+
+/* Tablets Grandes e Laptops Pequenos (768px a 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .about-section .container.about-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* 2 a 3 colunas em tablets */
+        gap: 1.5rem; /* Ajustado para tablets */
+    }
+    .about-person-card {
+        padding: 1.5rem 1rem; /* Ajustado para tablets */
+    }
+    .about-person-card .about-image {
+        width: 120px; /* Imagem ajustada para tablets */
+        height: 120px;
+    }
+    .about-person-card .person-name {
+        font-size: 1.4rem;
+    }
+    .about-person-card .person-role {
+        font-size: 0.85rem;
+    }
+    .about-person-card p {
+        font-size: 0.8rem;
+    }
+}
