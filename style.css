@@ -10,6 +10,7 @@
     --white: #ffffff;
     --box-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
     --box-shadow-dark: 0 6px 20px rgba(0, 0, 0, 0.2);
+    
 
     /* Fontes */
     --font-heading: 'Poppins', sans-serif;
@@ -417,8 +418,203 @@ body {
     font-weight: 600;
     opacity: 0.9;
 }
+/* --- NOVA SEÇÃO: MATRICULE-SE - CARROSSEL DE CURSOS --- */
+/* --- NOVA SEÇÃO: MATRICULE-SE - CARROSSEL DE CURSOS --- */
+.course-carousel-section {
+    background-color: var(--primary-color); /* Fundo com a cor primária para destaque */
+    color: var(--white);
+    padding: var(--section-padding-desktop);
+    text-align: center;
+    overflow: hidden; /* Importante para o carrossel */
+    position: relative;
+}
+
+.course-carousel-section .section-title {
+    color: var(--white);
+}
+
+.course-carousel-section .section-title::after {
+    background: linear-gradient(to right, var(--white), var(--accent-color));
+}
+
+.course-carousel-section .section-description {
+    font-size: 1.2rem;
+    color: var(--text-color-light);
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.course-carousel-wrapper {
+    position: relative;
+    max-width: 800px; /* Largura máxima do carrossel */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow-dark);
+}
+
+.course-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Transição suave para as imagens */
+}
+
+/* AJUSTADO: carousel-item para ter a imagem preenchendo o card */
+.course-carousel-track .carousel-item {
+    min-width: 100%; /* Cada item ocupa 100% da largura do track */
+    box-sizing: border-box;
+    text-align: center;
+    background-color: var(--white);
+    /* Removido padding interno para a imagem preencher tudo */
+    padding: 0; 
+    border-radius: 12px;
+    overflow: hidden; /* Garante que a imagem se mantenha dentro do raio da borda */
+    position: relative;
+    cursor: grab; /* Indica que o item pode ser arrastado */
+    transition: transform 0.3s ease-out; /* Transição para efeitos futuros */
+    display: flex; /* Para flexbox interno, se houver conteúdo */
+    justify-content: center; /* Centraliza a imagem/conteúdo */
+    align-items: center; /* Centraliza a imagem/conteúdo */
+    flex-direction: column; /* Conteúdo em coluna, se houver */
+}
+
+.course-carousel-track .carousel-item:active {
+    cursor: grabbing;
+}
+
+/* AJUSTADO: carousel-item img para preencher 100% da altura do item */
+.course-carousel-track .carousel-item img {
+    width: 100%;
+    height: 100%; /* IMAGEM VAI OCUPAR 100% DA ALTURA DO ITEM */
+    object-fit: cover; /* Recorta para cobrir o espaço, sem distorcer */
+    display: block;
+    border-radius: 0; /* Remove border-radius para que a imagem vá até as bordas do item */
+    margin-bottom: 0; /* Remove qualquer margem abaixo da imagem */
+}
+
+/* AJUSTADO: carousel-item-content - agora é um overlay transparente ou com efeito */
+.carousel-item-content {
+    position: absolute; /* Posição absoluta para o overlay */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Overlay escuro sutil */
+    display: flex; /* Mantém flex para permitir alinhamento se houvesse conteúdo */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    opacity: 0; /* Inicialmente invisível */
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Permite cliques através dele, se a imagem for o foco principal */
+}
+
+/* Torna o overlay visível no hover */
+.carousel-item:hover .carousel-item-content {
+    opacity: 1; 
+}
+
+/* Remove estilos para h3, p, etc. dentro de carousel-item-content, pois o HTML não os tem mais */
+.carousel-item-content h3,
+.carousel-item-content p,
+.carousel-item-content .btn-small {
+    display: none; /* Garante que nenhum elemento de texto/botão apareça se o HTML ainda o tiver */
+}
 
 
+.carousel-navigation {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 1rem;
+    pointer-events: none;
+}
+
+.nav-arrow {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    font-size: 1.8rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+.nav-arrow:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.nav-arrow.prev {
+    left: 10px;
+}
+
+.nav-arrow.next {
+    right: 10px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--accent-color);
+}
+
+/* Estilo para o botão "Saiba Mais" dentro do carrossel (se for usar sem overlay) */
+/* btn-small é um estilo utilitário e sua posição deve ser gerenciada pelo layout pai se usado */
+.btn-small { 
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-top: 0; /* Removendo margem superior genérica para esta classe */
+    background-color: var(--accent-color);
+    color: var(--background-dark);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow-light);
+}
+
+.btn-small:hover {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-medium);
+}
 /* Seção de Contato Rápido (CTA) */
 .contact-cta-section {
     background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
@@ -681,11 +877,8 @@ body {
         max-width: 80%;
         display: inline-block; /* Garante que seja visível no mobile */
     }
+/* INÍCIO DOS AJUSTES PARA O CARROSSEL DE CURSOS (MOBILE) */
 
-    .hero-cta-desktop { /* O botão para desktop - ESCONDIDO NO MOBILE */
-        display: none;
-    }
-    /* FIM DOS ESTILOS ESPECÍFICOS PARA A SEÇÃO HERO NO MOBILE */
 
 /* Ajustes ESPECÍFICOS para a seção "Sobre Nós" no mobile */
 @media (max-width: 767px) {
@@ -1308,7 +1501,7 @@ body {
         font-size: 2.2rem;
     }
 
-    .app-button {
+    .app-button {   
         bottom: calc(1.2rem + 50px + 0.8rem);
         right: 1.2rem;
         width: 50px;

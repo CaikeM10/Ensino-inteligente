@@ -137,27 +137,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
         sr.reveal('.reveal-bottom', {
             ...commonRevealOptions, // Espalha as opções comuns
-            distance: '60px', // Mais distância
+            distance: '60px', // Más distancia
             origin: 'bottom',
-            interval: 150, // Intervalo um pouco maior para um efeito cascata mais notável
+            interval: 150, // Intervalo um pouco maior para um efeito cascata más notável
         });
 
         sr.reveal('.reveal-left', {
             ...commonRevealOptions,
-            distance: '100px', // Mais distância
+            distance: '100px', // Más distancia
             origin: 'left',
         });
 
         sr.reveal('.reveal-right', {
             ...commonRevealOptions,
-            distance: '100px', // Mais distância
+            distance: '100px', // Más distancia
             origin: 'right',
         });
 
         sr.reveal('.reveal-scale', {
             ...commonRevealOptions,
-            scale: 0.85, // Escala um pouco maior
-            interval: 200, // Intervalo maior para as logos
+            scale: 0.85, // Escala un poco mayor
+            interval: 200, // Intervalo mayor para las logos
         });
 
         // Opcional: Revelar o header com um pequeno atraso
@@ -243,5 +243,74 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(resultsSection);
     } else {
         console.warn('Seção de Resultados (#resultados) não encontrada. Animação de contagem não será ativada.');
+    }
+
+    // --- 5. Funcionalidade do Carrossel de Cursos (Com Setas) ---
+    const carouselTrack = document.getElementById('courseCarouselTrack');
+    const prevCourseButton = document.getElementById('prevCourse');
+    const nextCourseButton = document.getElementById('nextCourse');
+    const carouselDotsContainer = document.getElementById('carouselDots');
+
+    if (carouselTrack && prevCourseButton && nextCourseButton && carouselDotsContainer) {
+        const carouselItems = Array.from(carouselTrack.children);
+        let currentSlideIndex = 0;
+
+        // Função para mover o carrossel
+        const moveToSlide = (index) => {
+            // Lógica para loop infinito
+            if (index < 0) {
+                currentSlideIndex = carouselItems.length - 1; // Volta para o último
+            } else if (index >= carouselItems.length) {
+                currentSlideIndex = 0; // Vai para o primeiro
+            } else {
+                currentSlideIndex = index;
+            }
+            
+            // Calcula o deslocamento para o slide atual
+            const offset = carouselItems[currentSlideIndex].offsetLeft - carouselTrack.offsetLeft;
+            carouselTrack.style.transform = `translateX(-${offset}px)`;
+            
+            updateCarouselDots();
+        };
+
+        // Criar os indicadores de slide (bolinhas)
+        const createCarouselDots = () => {
+            carouselItems.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => moveToSlide(index));
+                carouselDotsContainer.appendChild(dot);
+            });
+        };
+
+        // Atualizar o estado dos indicadores de slide
+        const updateCarouselDots = () => {
+            Array.from(carouselDotsContainer.children).forEach((dot, index) => {
+                if (index === currentSlideIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        };
+
+        // Event listeners para as setas
+        prevCourseButton.addEventListener('click', () => moveToSlide(currentSlideIndex - 1));
+        nextCourseButton.addEventListener('click', () => moveToSlide(currentSlideIndex + 1));
+
+        // Inicializar carrossel
+        createCarouselDots();
+        moveToSlide(0); // Garante que começa no primeiro slide
+
+        // Ajustar slides em redimensionamento (para garantir que a imagem correta esteja visível)
+        window.addEventListener('resize', () => moveToSlide(currentSlideIndex));
+
+        // Auto-play (Opcional)
+        // setInterval(() => {
+        //     moveToSlide(currentSlideIndex + 1);
+        // }, 5000); // Mude de slide a cada 5 segundos
+    } else {
+        console.warn('Elementos do carrossel de cursos não encontrados. A funcionalidade não será ativada.');
     }
 });
